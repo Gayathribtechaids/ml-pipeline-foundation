@@ -8,5 +8,6 @@ version = "0.1.0"
 description = "A production-style Python foundation for an ML pipeline"
 requires-python = ">=3.10,<3.14"
 dependencies = [
-    "Pillow"
+    "Pillow==12.3.0",
+    "pydantic==2.12.5"
 ] 
