@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+from ml_pipeline.decorators import timeit, retry, ResourceManager
 class Step(ABC):
 
     @abstractmethod
@@ -26,9 +27,13 @@ class Pipeline:
 
     def __init__(self, steps):
         self.steps = steps
+    @timeit
+    @retry(max_attempts=3)
 
     def run(self, data):
-        for step in self.steps:
-            data = step.process(data)
-        return data
+        with ResourceManager():
+            for step in self.steps:
+                data = step.process(data)
+
+        return data 
     
