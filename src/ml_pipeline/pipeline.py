@@ -1,6 +1,7 @@
 from abc import ABC, abstractmethod
 from ml_pipeline.decorators import timeit, retry, ResourceManager
 from ml_pipeline.exceptions import ProcessingError
+from ml_pipeline.logger import logger
 class Step(ABC):
 
     @abstractmethod
@@ -9,19 +10,19 @@ class Step(ABC):
 class LoadImageStep(Step):
 
     def process(self, data):
-        print("Loading images...")
+        logger.info("Loading images...")
         return data
     
 class ResizeImageStep(Step):
 
     def process(self, data):
-        print("Resizing images...")
+        logger.info("Resizing images...")
         return data
     
 class NormalizeImageStep(Step):
 
     def process(self, data):
-        print("Normalizing images...")
+        logger.info("Normalizing images...")
         return data
     
 class Pipeline:

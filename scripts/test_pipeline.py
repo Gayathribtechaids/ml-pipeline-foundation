@@ -1,5 +1,6 @@
 import sys
 from ml_pipeline.exceptions import ProcessingError
+from ml_pipeline.logger import logger
 sys.path.append("src")
 
 from ml_pipeline.pipeline import (
@@ -11,7 +12,7 @@ from ml_pipeline.pipeline import (
 
 class ConvertToGrayscaleStep:
     def process(self, data):
-        print("Converting images to grayscale...")
+        logger.info("Converting images to grayscale...")
         return data
 
 pipeline = Pipeline([
