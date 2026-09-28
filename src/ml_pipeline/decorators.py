@@ -1,6 +1,6 @@
 import time
 from functools import wraps
-
+from ml_pipeline.exceptions import ProcessingError
 
 def timeit(func):
 
@@ -28,7 +28,7 @@ def retry(max_attempts):
             while attempts < max_attempts:
                 try:
                     return func(*args, **kwargs)
-                except Exception:
+                except ProcessingError:
                     attempts += 1
 
                     if attempts == max_attempts:

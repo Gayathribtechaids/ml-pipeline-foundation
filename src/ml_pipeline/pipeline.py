@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
 from ml_pipeline.decorators import timeit, retry, ResourceManager
+from ml_pipeline.exceptions import ProcessingError
 class Step(ABC):
 
     @abstractmethod
